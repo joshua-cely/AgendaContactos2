@@ -1,44 +1,32 @@
 
 package view;
-
 import javax.swing.JOptionPane;
 import model.Usuario;
-
 public class FrmDashboard extends javax.swing.JFrame {
-
     private Usuario usuarioLogueado;
-
     public FrmDashboard(Usuario usuario) {
         initComponents();
         this.usuarioLogueado = usuario;
-        lblUsuario.setText("Username: " + usuario.getUsuario());
+        // Verificar si el usuario es null antes de acceder a sus métodos
+        if (usuario != null) {
+            lblUsuario.setText("Username: " + usuario.getUsuario());
+        } else {
+            lblUsuario.setText("Usuario no logueado");
+        }
         setLocationRelativeTo(null);
-        // Dentro del constructor, después de setLocationRelativeTo(null)
+        
+        // ActionListener para el menú "Usuarios"
+        menuUsuarios.addActionListener(e -> {
+            this.dispose(); // Cierra el Dashboard
+            FrmUsuarios frmUsuarios = new FrmUsuarios(); // Abre FrmUsuarios
+            frmUsuarios.setVisible(true);
+            frmUsuarios.setLocationRelativeTo(null); // Centrar ventana
+        });
+        // ActionListener para el menú "Cerrar"
         menuCerrar.addActionListener(e -> cerrarSesion());
-
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Cierra toda la app al cerrar
     }
-    private void cerrarSesion() {
-        int confirm = JOptionPane.showConfirmDialog(
-            this,
-            "¿Deseas cerrar la sesión y volver al inicio?",
-            "Cerrar sesión",
-            JOptionPane.YES_NO_OPTION
-        );
-        if (confirm == JOptionPane.YES_OPTION) {
-            this.dispose(); // Cierra el Dashboard
-            FrmInicio inicio = new FrmInicio(); // Crea la ventana de inicio
-            inicio.setVisible(true);
-            inicio.setLocationRelativeTo(null); // La centra
-        }
-    }
-        
-
-    public javax.swing.JMenuItem getMenuCerrar() {
-        return menuCerrar;
-    } 
+ 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -58,6 +46,9 @@ public class FrmDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agenda Contactos");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setFocusCycleRoot(false);
+        setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
 
         lblLogo.setText("Logo");
 
@@ -138,4 +129,8 @@ public class FrmDashboard extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuListado;
     private javax.swing.JMenuItem menuUsuarios;
     // End of variables declaration//GEN-END:variables
+
+    private void cerrarSesion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
