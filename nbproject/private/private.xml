@@ -10,11 +10,15 @@
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/model/Conexion.java</file>
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/model/Usuario.java</file>
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/model/UsuarioDAO.java</file>
-            <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/view/FrmInicio.java</file>
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/view/FrmLogin.java</file>
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/view/FrmDashboard.java</file>
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/view/FrmUsuarios.java</file>
             <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/controller/UsuariosController.java</file>
+            <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/view/FrmContactos.java</file>
+            <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/model/Contacto.java</file>
+            <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/model/ContactoDAO.java</file>
+            <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/controller/ControladorContacto.java</file>
+            <file>file:/C:/Users/jcely/Documents/NetBeansProjects/AgendaContactos2/src/view/FrmInicio.java</file>
         </group>
     </open-files>
 </project-private>
