@@ -29,14 +29,40 @@ public class ControladorContacto implements ActionListener {
 
     // Listar contactos en la tabla
     private void listar(JTable tabla) {
-        limpiarTabla();
-        modelo = (DefaultTableModel) tabla.getModel();
-        List<Contacto> lista = dao.listar();
-        for (Contacto c : lista) {
-            modelo.addRow(new Object[]{c.getNombre(), c.getTelefono(), c.getEmail(), });
+    // Definir el modelo con 4 columnas, incluyendo el ID (invisible)
+    modelo = new DefaultTableModel(new Object[]{"ID", "Nombre", "Teléfono", "Email"}, 0) {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Evita que el usuario edite las celdas
         }
-        vista.tblContactos.setModel(modelo);
+    };
+    
+    this.vista.tblContactos.addMouseListener(new java.awt.event.MouseAdapter() {
+    @Override
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        int filaSeleccionada = vista.tblContactos.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            vista.txtContacNombre.setText(vista.tblContactos.getValueAt(filaSeleccionada, 1).toString());
+            vista.txtContacTelefono.setText(vista.tblContactos.getValueAt(filaSeleccionada, 2).toString());
+            vista.txtContacDireccion.setText(vista.tblContactos.getValueAt(filaSeleccionada, 3).toString());
+        }
     }
+});
+
+    // Llenar el modelo
+    List<Contacto> lista = dao.listar();
+    for (Contacto c : lista) {
+        modelo.addRow(new Object[]{c.getId(), c.getNombre(), c.getTelefono(), c.getEmail()});
+    }
+
+    // Asignar modelo a la tabla
+    tabla.setModel(modelo);
+
+    // Ocultar columna ID
+    tabla.getColumnModel().getColumn(0).setMinWidth(0);
+    tabla.getColumnModel().getColumn(0).setMaxWidth(0);
+    tabla.getColumnModel().getColumn(0).setWidth(0);
+}
 
     // Limpiar tabla
     private void limpiarTabla() {

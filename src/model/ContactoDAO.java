@@ -21,6 +21,7 @@ public class ContactoDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 Contacto c = new Contacto();
+                c.setId(rs.getInt("id"));
                 c.setNombre(rs.getString("nombre"));
                 c.setTelefono(rs.getString("telefono"));
                 c.setEmail(rs.getString("email"));
